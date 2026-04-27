@@ -25,6 +25,6 @@ public class Asignacion {
     @Column(name = "rol_en_proyecto", length = 100)
     private String rolEnProyecto;
 
-    //@Column(name = "horas_asignadas")
-    private int horasAsignadas;//
+    @Column(name = "horas_asignadas")
+    private int horasAsignadas;
 }
