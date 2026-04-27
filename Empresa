@@ -1,0 +1,34 @@
+package com.ues.edu.entidades;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@Entity
+@Table(name = "Empresa")
+public class Empresa {
+
+    @Id
+    @Column(name = "id_empresa")
+    private Long idEmpresa;
+
+    @NotBlank
+    @Column(name = "nombre", nullable = false, length = 100)
+    private String nombre;
+
+    @Column(name = "industria", length = 100)
+    private String industria;
+
+    @Column(name = "correo_contacto", length = 100)
+    private String correoContacto;
+
+    @OneToOne(mappedBy = "empresa")
+    private Sede sede;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<Proyecto> proyectos;
+}
