@@ -1,0 +1,33 @@
+package com.ues.edu.entidades;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@Entity
+@Table(name = "Empleado")
+public class Empleado {
+
+    @Id
+    @Column(name = "id_empleado")
+    private Long idEmpleado;
+
+    @Column(name = "nombre", length = 100)
+    private String nombre;
+
+    @Column(name = "cargo", length = 100)
+    private String cargo;
+
+    @Column(name = "salario")
+    private double salario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_departamento")
+    private Departamento departamento;
+
+    @OneToMany(mappedBy = "empleado")
+    private List<Asignacion> asignaciones;
+}
